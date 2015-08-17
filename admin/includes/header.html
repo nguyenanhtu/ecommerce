@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	<?php
+			if(isset($page_title))
+			{
+			echo $page_title;
+			}
+			else 
+			{
+			echo "AT Computer - Administrator";
+			}
+		?>
+</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script>
+   var StyleFile = "theme" + document.cookie.charAt(6) + ".css";
+   document.writeln('<link rel="stylesheet" type="text/css" href="css/' + StyleFile + '">');
+</script>
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="css/ie-sucks.css" />
+<![endif]-->
+</head>
+
+<body>
+	<div id="container">
+    	<div id="header">
+        	<h2>My eCommerce Admin area</h2>
+    <div id="topmenu">
+            	<ul>
+				<?php
+					$pages = array(
+						'Danh mục nhãn hàng' => 'index_categories.php',
+						'Danh mục sản phẩm' => 'index_products.php',
+						'Users' => 'users.php',
+						'Đơn đặt hàng' => 'index_orders.php',
+					);
+					$this_page = basename($_SERVER['PHP_SELF']);
+					foreach($pages as $k => $v)
+						{
+							echo '<li';
+							if($this_page == $v)
+							{
+								echo ' class="current"';
+							}
+							echo '> <a href="'.$v.'"> '.$k.' </a> </li>';
+						}
+				?>
+                	
+              </ul>
+          </div>
+      </div>
+        <div id="top-panel">
+            <div id="panel">
+                <ul>
+                    <li><a href="#" class="report">Sales Report</a></li>
+                    <li><a href="#" class="report_seo">SEO Report</a></li>
+                    <li><a href="#" class="search">Search</a></li>
+                    <li><a href="#" class="feed">RSS Feed</a></li>
+                </ul>
+            </div>
+      </div>
+        <div id="wrapper">
+           
