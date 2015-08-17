@@ -1,0 +1,132 @@
+
+<table width="996"  border="0" cellspacing="0" cellpadding="0">
+							<tr align="left" valign="top">
+									  <td width="202" height="334">
+												  <table width="202"  border="0" cellspacing="0" cellpadding="0">
+													<tr>
+													  <td height="320" align="left" valign="top">
+														<div class="category"><img src="images/spacer.gif" alt="" width="30" height="19">Danh mục nhãn hàng<a href="http://www.templatesfreelance.com/"><img src="images/spacer.gif" alt="" width="10" height="10" border="0"></a></div>
+														<?php
+														$query = 'select * from categories ';
+														$result = mysql_query($query);
+														if($result)
+														{
+														while($row = mysql_fetch_array($result))
+														{
+														$cat= $row['id'];
+														$cat_name = $row['category'];
+														echo '<div class="linkmenu"><img src="images/spacer.gif" alt="" width="20" height="19"><span class="red">&bull;</span>&nbsp;&nbsp;<a href="product_cat_show.php?id='.$cat.'&page=1">'.$cat_name.'</a></div>';
+														}
+														}
+														?>
+													</td>
+													</tr>
+													<tr>
+													  <td height="26">&nbsp;</td>
+													</tr>
+													<tr>
+													  <td align="center"><a href="http://www.templatesfreelance.com/"><img src="images/banner.jpg" alt="" width="197" height="215" border="0"></a></td>
+													</tr>
+												  </table>
+									  </td>
+									  <td width="20">&nbsp;</td>
+									  <td width="774">
+												   <table width="774"  border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																  <td height="40" class="popular"><img src="images/spacer.gif" alt="" width="27" height="19"><span class="popular_text">Popular Models</span></td>
+																</tr>
+																<tr>
+																	  <td height="138" valign="top" class="popular_center">
+																			  <table width="774" height="139"  border="0" cellpadding="0" cellspacing="0">
+																				<tr>
+																				  <td width="15">&nbsp;</td>
+																				  <td width="743"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																					<?php
+																						//viết code show sản phẩm được quan tâm ở đây
+																					$query = 'select * from products order by likes DESC limit 0,4';
+																					$result = mysql_query($query);
+																					while($row=mysql_fetch_array($result))
+																					{
+																					  $pid = $row['id'];
+																					  $likes = $row['likes'];
+																					  echo '<td width="21%" height="148" align="center"><a href="detail_products.php?pid='.$pid.'"><img src="includes/image_products.php?id='.$pid.'" alt="" width="140" height="117" border="0"></a><br>';
+																					  echo '<span class="style7"><a href="detail_products.php?pid='.$pid.'">Lượng like : '.$likes.'</a></span></td>';
+																					  echo '<td width="2%" align="center"><img src="images/op.jpg" width="14" height="117"></td>';
+																					}
+																					?>
+																					</tr>
+																				  </table></td>
+																				  <td width="16">&nbsp;</td>
+																				</tr>
+																			  </table>
+																	  </td>
+																</tr>
+																<tr>
+																  <td valign="top"><img src="images/close.gif" alt="" width="774" height="9"></td>
+																</tr>
+													</table>
+						
+											  
+											  
+											  
+													<table width="774"  border="0" cellspacing="0" cellpadding="0">
+														  <tr>
+																<td width="22">&nbsp;</td>
+																<td width="729">&nbsp;</td>
+																<td width="23">&nbsp;</td>
+														  </tr>
+														  <tr>
+																<td height="479">&nbsp;</td>
+																<td align="left" valign="top">
+															
+															 <?php
+																$query = "select * from products limit 0,6";
+																$result = mysql_query($query);
+																while($row = mysql_fetch_array($result))
+																{
+																	$pid = $row['id'];
+																					
+																					echo '<table width="207" height="234"  border="0" cellpadding="0" cellspacing="0" class="productleft_top">';
+																					  echo '<tr>';
+																						echo '<td align="left" valign="top" class="newtovar">';
+																							echo '<table width="207"  border="0" cellspacing="0" cellpadding="0">';
+																							  echo '<tr>';
+																								echo '<td height="200" valign="top">';
+																									echo '<table width="100%"  border="0" cellspacing="0" cellpadding="0">';
+																									  echo '<tr>';
+																										echo '<td height="53"><span class="style7"><a href="detail_products.php?pid='.$pid.'"> '.$row["product"].' </a> </span></td>';
+																									  echo '</tr>';
+																									  echo '<tr>';
+																										echo '<td height="147" align="center"><a href="detail_products.php?pid='.$pid.'"><img src="includes/image_products.php?id='.$pid.'" alt="" width="175" height="144" border="0"></a></td>';
+																									  echo '</tr>';
+																									echo '</table>';
+																								echo '</td>';
+																								echo '</tr>';
+																							  echo '<tr>';
+																								echo '<td height="35">';
+																									echo '<table width="100%"  border="0" cellspacing="0" cellpadding="0">';
+																									  echo '<tr>';
+																										echo '<td width="38%" height="24"><span class="style7"><a href="detail_products.php?pid='.$pid.'" id="blue1">More details</a></span></td>';
+																										echo '<td width="23%">&nbsp;</td>';
+																										echo '<td width="39%" class="price"> '.number_format($row["price"],0,'.','.').' VND</td>';
+																									  echo '</tr>';
+																									echo '</table>';
+																								echo '</td>';
+																							  echo '</tr>';
+																							echo '</table>';
+																						echo '</td>';
+																					  echo '</tr>';
+																					echo '</table>';
+																					
+								
+																					}
+																					?>
+
+																</td>
+																<td>&nbsp;</td>
+														  </tr>
+													</table>
+										</td>
+							</tr>
+						  </table>
